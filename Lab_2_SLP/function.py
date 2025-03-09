@@ -36,19 +36,32 @@ def check_date_exists(day, month, year):
     Повернути True, якщо така дата існує, та False – якщо такої дати не буває
     (наприклад 15-тий місяць);
     """
+  
     if month < 1 or month > 12: # перевірка чи місяць від 1 до 12
         return False # якщо ні, то такої дати не буває
     
     if month == 2: # якщо місяць лютий
         if number_year(year): # перевірка чи це високосний рік
-            return 1 <= day <= 29 # якщо так, то 29 днів
+            if 1 <= day <= 29: # якщо так, то 29 днів
+                return True
+            else:
+                return False
         else:
-            return 1 <= day <= 28 # якщо ні, то 28 днів
+            if 1 <= day <= 28: # якщо ні, то 28 днів
+                return True
+            else:
+                return False
         
     if month in [1, 3, 5, 7, 8, 10, 12]: # якщо місяць має 31 день
-        return 1 <= day <= 31 # то день повинен бути від 1 до 31
+        if 1 <= day <= 31: # то день повинен бути від 1 до 31
+            return True
+        else:
+            return False
     else:
-        return 1 <= day <= 30 # інакше день повинен бути від 1 до 30
+        if 1 <= day <= 30: # інакше день повинен бути від 1 до 30
+            return True
+        else:
+            return False
     
 def list_date(dd_mm_yyyy):
     """

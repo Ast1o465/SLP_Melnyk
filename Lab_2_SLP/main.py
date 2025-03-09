@@ -129,8 +129,8 @@ def main():
             print("Різниця між датами:", difference_dates(date1, date2))
 
         elif choice == "2":
-            date1 = print(random_date())
-            date2 = print(random_date())
+            # date1 = print(random_date())
+            # date2 = print(random_date())
             print(difference_dates(random_date(), random_date()))
         else:
             print("Немає функції для виконання")    
