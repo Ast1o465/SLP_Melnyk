@@ -12,7 +12,7 @@ def number_of_month(n):
         return "зима"
     elif n >= 3 and n <= 5:
         return "весна"
-    elif n >= 6 and n <= 8: 
+    elif n >= 6 and н <= 8: 
         return "літо"
     else:
         return "осінь"
@@ -109,7 +109,7 @@ def random_date():
     """
     Функцію, у якої немає аргументів, а повертає вона випадкову дату у форматі dd.mm.yyyy.
     """
-    day = rand.randint(1, 31) # випадковий день
+    # day = rand.randint(1, 31) # випадковий день
     month = rand.randint(1, 12) # випадковий місяць
     year = rand.randint(1900, 2030) # випадковий рік
     
@@ -135,7 +135,7 @@ def difference_dates(date1, date2):
     # Перевірка формату дат
     if date1.count('.') != 2 or date2.count('.') != 2:
         print("Помилка: дати повинні бути у форматі dd.mm.yyyy")
-        return None
+        return "Невірний формат дати"
     
     # Розділяємо дати на компоненти
     date1_parts = date1.split('.')
@@ -150,7 +150,7 @@ def difference_dates(date1, date2):
     
     if not is_valid_format:
         print("Помилка: компоненти дати повинні бути числами")
-        return None
+        return "Невірні компоненти дати"
     
     # Конвертуємо компоненти в цілі числа
     day1, month1, year1 = map(int, date1_parts)
@@ -158,11 +158,11 @@ def difference_dates(date1, date2):
     
     # Перевірка існування дат
     if not check_date_exists(day1, month1, year1):
-        print("Помилка:  дата введена неправильно")
-        return None
+        print(f"Помилка: дата {date1} не існує (перевірте день та місяць)")
+        return "Неіснуюча дата"
     if not check_date_exists(day2, month2, year2):
-        print("Помилка:  дата введена неправильно")
-        return None
+        print(f"Помилка: дата {date2} не існує (перевірте день та місяць)")
+        return "Неіснуюча дата"
     
     # Перетворюємо коректні дати у об'єкти datetime
     date1_dt = dati.datetime.strptime(date1, "%d.%m.%Y")
@@ -179,26 +179,17 @@ def difference_dates(date1, date2):
         difference = date1_dt - date2_dt
     
     # Повертаємо кількість днів між датами
-    return difference.days
+    return f"Різниця між датами: {difference.days} днів"
 
 
 def month_name(n):
     """
-    отримує як аргумент номер місяця, виводить на екран 
+    Отримує як аргумент номер місяця, виводить на екран 
     відповідну назву місяця та нічого не повертає.
     """
-    months = { # словник з назвами місяців
-        1: "Січень",
-        2: "Лютий",
-        3: "Березень",
-        4: "Квітень",
-        5: "Травень",
-        6: "Червень",
-        7: "Липень",
-        8: "Серпень",
-        9: "Вересень",
-        10: "Жовтень",
-        11: "Листопад",
-        12: "Грудень"
+    months = {
+        1: "Січень", 2: "Лютий", 3: "Березень", 4: "Квітень",
+        5: "Травень", 6: "Червень", 7: "Липень", 8: "Серпень",
+        9: "Вересень", 10: "Жовтень", 11: "Листопад", 12: "Грудень"
     }
-    return months.get(n, "Такого місяця не існує")
+    print(months.get(n, "Такого місяця не існує"))

@@ -126,7 +126,7 @@ def main():
             date1 = input("Введіть першу дату у форматі dd.mm.yyyy: ")
             date2 = input("Введіть другу дату у форматі dd.mm.yyyy: ")
 
-            print("Різниця між датами:", difference_dates(date1, date2))
+            print(difference_dates(date1, date2))
 
         elif choice == "2":
             # date1 = print(random_date())
@@ -137,7 +137,8 @@ def main():
 
     elif choice == 7:
         n = int(input("Введіть номер місяця: "))
-        print("Місяць:", month_name(n))
+        month_name(n)
+        
     else:
         print("Немає функції для виконання")
     
