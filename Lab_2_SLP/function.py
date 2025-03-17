@@ -12,7 +12,7 @@ def number_of_month(n):
         return "зима"
     elif n >= 3 and n <= 5:
         return "весна"
-    elif n >= 6 and н <= 8: 
+    elif n >= 6 and n <= 8: 
         return "літо"
     else:
         return "осінь"
