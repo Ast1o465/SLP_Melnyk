@@ -154,6 +154,7 @@ def show_students_KN():
 def sort_students_KN():
     """
     Функція для сортування студентів за середнім балом
+    і оновлення їх номерів відповідно до сортування
     """
     with open('KN-24.csv', 'r', newline='', encoding='utf-8') as file:
         students = list(csv.reader(file))
@@ -162,6 +163,10 @@ def sort_students_KN():
         
         # Сортування студентів за середнім балом
         data.sort(key=lambda x: float(x[2]), reverse=True)
+        
+        # Оновлення номерів студентів
+        for i, student in enumerate(data, 1):
+            student[0] = str(i)
     
     with open('KN-24.csv', 'w', newline='', encoding='utf-8') as file:
         writer = csv.writer(file)
