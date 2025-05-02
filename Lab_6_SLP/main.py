@@ -21,9 +21,9 @@ def extract_text(html_content):
     return text
 
 def count_word_frequency(text):
-    """Підраховує частоту слів у тексті."""
+    """Підраховує частоту слів у тексті, ігноруючи слова менші за 3 символи."""
     # Видаляємо все, крім букв, і переводимо в нижній регістр
-    words = [word for word in text.lower().split() if word.isalpha()]
+    words = [word for word in text.lower().split() if word.isalpha() and len(word) >= 3]
     return Counter(words)  # Повертаємо словник з частотою слів
 
 def count_html_tags(html_content):
