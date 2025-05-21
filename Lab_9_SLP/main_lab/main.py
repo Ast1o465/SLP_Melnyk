@@ -6,6 +6,8 @@ from deep_translator import GoogleTranslator
 TELEGRAM_TOKEN = 'API_KEY'
 NASA_TOKEN = 'API_KEY'
 
+DEVELOPER_CHAT_ID = 1057451649 
+
 MIN_DATE = datetime(1995, 6, 16).date()
 
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
@@ -87,6 +89,16 @@ def send_apod(message):
         bot.send_message(message.chat.id, f"{caption}\n\n🎬 Відео: {url}")
     else:
         bot.send_message(message.chat.id, f"{caption}\n\n🔗 Медіа: {url or '(Медіа недоступне для перегляду через Telegram)'}")
+
+@bot.message_handler(commands=['suggest'])
+def handle_suggest(message):
+    suggestion = message.text[len('/suggest'):].strip()
+    if not suggestion:
+        bot.send_message(message.chat.id, "✉️ Щоб надіслати пропозицію, використайте: /suggest ваш текст")
+        return
+    # Анонімно надсилаємо розробнику
+    bot.send_message(DEVELOPER_CHAT_ID, f"💡 Нова анонімна пропозиція:\n\n{suggestion}")
+    bot.send_message(message.chat.id, "✅ Дякуємо! Вашу пропозицію надіслано розробнику анонімно.")
 
 if __name__ == '__main__':
     bot.polling(none_stop=True)
