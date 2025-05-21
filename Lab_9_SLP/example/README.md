@@ -1,8 +1,5 @@
 # 🌦️ Lab 9 SLP: Telegram Weather Bot
 
-> **Простий Telegram-бот для отримання поточної погоди у вибраному місті.**  
-> Використовує [OpenWeatherMap API](https://openweathermap.org/api) та бібліотеку [`pyowm`](https://github.com/csparpa/pyowm).
-
 ---
 
 ## 🚀 Можливості
